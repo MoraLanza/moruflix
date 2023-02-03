@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
+@RequestMapping("/movies")
 public class MovieController {
 
     private final GetMovieQuery getMovieQuery;
@@ -34,7 +35,7 @@ public class MovieController {
     }
 
 
-    @GetMapping("/{movie_id}")
+    @GetMapping(value = "/{movie_id}")
     // Get Company by Id
     public MovieRestModel getCompany(@PathVariable("movie_id") Integer movieId) {
         log.info("Getting movie with movieId {}", movieId);
@@ -72,7 +73,7 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.CREATED).body(movieResult);
     }
 
-    @PutMapping("/{movie_id}")
+    @PutMapping(value = "/{movie_id}")
     // Put movie
     public MovieRestModel updateMovie(@PathVariable("movie_id") Integer movieId, @RequestBody @Valid UpdateMovieRequestBody body) {
         log.info("Updating movie with movieId {} with body {}", movieId, body);
